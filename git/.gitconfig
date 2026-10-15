@@ -1,0 +1,10 @@
+[core]
+	compression = 0
+[user]
+	name = Your Name
+	email = your.email@example.com
+[credential]
+	helper = osxkeychain
+[http]
+	lowSpeedLimit = 0
+	lowSpeedTime = 999999

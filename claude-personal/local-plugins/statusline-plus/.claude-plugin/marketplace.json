@@ -1,0 +1,7 @@
+{
+  "name": "local-mods",
+  "owner": { "name": "dandan-drori" },
+  "plugins": [
+    { "name": "statusline-plus", "source": "./", "description": "Styled status band with usage bars, cost, git, PR tracking" }
+  ]
+}

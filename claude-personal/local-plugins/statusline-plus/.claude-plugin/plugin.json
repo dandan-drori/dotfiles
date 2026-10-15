@@ -1,0 +1,14 @@
+{
+  "name": "statusline-plus",
+  "version": "0.3.0",
+  "description": "Styled status band: context/5h/7d bars, burn rate, API-equivalent cost + savings, git, model, turn timer, live PR state, toasts",
+  "types": "./types/index.d.ts",
+  "userConfig": {
+    "planPriceUsd": {
+      "type": "number",
+      "title": "Monthly plan price (USD)",
+      "description": "Your subscription price. Savings = month's API-equivalent cost minus this. 0 hides savings.",
+      "default": 17
+    }
+  }
+}
