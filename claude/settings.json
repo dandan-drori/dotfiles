@@ -13,7 +13,7 @@
     "local-mods": {
       "source": {
         "source": "directory",
-        "path": "__HOME__/.claude-personal/local-plugins/statusline-plus"
+        "path": "__HOME__/.claude/local-plugins/statusline-plus"
       }
     }
   },

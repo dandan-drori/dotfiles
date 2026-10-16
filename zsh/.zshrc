@@ -35,12 +35,6 @@ plugins=(git zsh-autosuggestions zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
 
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f "$HOME/google-cloud-sdk/path.zsh.inc" ]; then . "$HOME/google-cloud-sdk/path.zsh.inc"; fi
-
-# The next line enables shell command completion for gcloud.
-if [ -f "$HOME/google-cloud-sdk/completion.zsh.inc" ]; then . "$HOME/google-cloud-sdk/completion.zsh.inc"; fi
-
 # aliases
 alias ga='git add .'
 alias gp='git push'
@@ -74,14 +68,8 @@ export PATH="$HOME/.local/bin:$PATH"
 # opencode
 export PATH=$HOME/.opencode/bin:$PATH
 
-# Claude Code personal profile (bypasses work proxy env vars)
-claude-personal() {
-  env -u ANTHROPIC_BASE_URL -u ANTHROPIC_AUTH_TOKEN -u ANTHROPIC_MODEL -u CLAUDE_FORCE_LOGIN_METHOD \
-    CLAUDE_CONFIG_DIR="$HOME/.claude-personal" claude "$@"
-}
-
-# Wait 1.5 seconds, turn off the display, run claude-personal in the foreground, and cacffeinate to make sure the system stays awake for up to 1.5 hours.
+# Wait 1.5 seconds, turn off the display, run claude in the foreground, and cacffeinate to make sure the system stays awake for up to 1.5 hours.
 # Can remotely use "pmset sleepnow" to put the Mac to sleep at any point.
-alias bedtime="(sleep 1.5 && pmset displaysleepnow && caffeinate -t 5400) &! claude-personal rc"
+alias bedtime="(sleep 1.5 && pmset displaysleepnow && caffeinate -t 5400) &! claude rc"
 alias goodnight="sudo pmset sleepnow"
 alias addtime="caffeinate -t 3600 &!"

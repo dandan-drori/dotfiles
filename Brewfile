@@ -1,7 +1,6 @@
 # Install: brew bundle --file=Brewfile
 
 # --- CLI ---
-brew "ampli"
 brew "cocoapods"
 brew "colima"
 brew "docker"
@@ -19,16 +18,13 @@ brew "python@3.13"
 brew "qemu"
 brew "redis"
 brew "ruby"
-brew "stripe"
 brew "uv"
 brew "wget"
 brew "jpeg"            # zshrc adds jpeg/bin to PATH
 
 # --- GUI apps ---
 cask "iterm2"
-cask "raycast"
-cask "visual-studio-code@insiders"
-cask "webstorm"
+cask "visual-studio-code"
 cask "postman"
 cask "mongodb-compass"
 cask "redis-insight"
@@ -36,5 +32,4 @@ cask "figma"
 cask "flycut"
 cask "google-chrome"
 cask "google-drive"
-cask "slack"
 cask "zoom"

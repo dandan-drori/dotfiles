@@ -59,16 +59,17 @@ link "$DOTFILES/zsh/.zprofile"  "$HOME/.zprofile"
 link "$DOTFILES/zsh/.p10k.zsh"  "$HOME/.p10k.zsh"
 link "$DOTFILES/git/.gitconfig" "$HOME/.gitconfig"
 
-VSC="$HOME/Library/Application Support/Code - Insiders/User"
+VSC="$HOME/Library/Application Support/Code/User"
 link "$DOTFILES/vscode/settings.json"    "$VSC/settings.json"
 link "$DOTFILES/vscode/keybindings.json" "$VSC/keybindings.json"
 [ -d "$DOTFILES/vscode/snippets" ] && link "$DOTFILES/vscode/snippets" "$VSC/snippets"
 
-# Claude personal profile (CLAUDE_CONFIG_DIR=~/.claude-personal, see claude-personal() in .zshrc)
-CP="$HOME/.claude-personal"
+# Claude Code config
+CP="$HOME/.claude"
 mkdir -p "$CP"
-sed "s#__HOME__#$HOME#g" "$DOTFILES/claude-personal/settings.json" > "$CP/settings.json"
-link "$DOTFILES/claude-personal/local-plugins" "$CP/local-plugins"
+[ -f "$CP/settings.json" ] && cp "$CP/settings.json" "$CP/settings.json.bak.$(date +%s)"
+sed "s#__HOME__#$HOME#g" "$DOTFILES/claude/settings.json" > "$CP/settings.json"
+link "$DOTFILES/claude/local-plugins" "$CP/local-plugins"
 
 # ---------- Node (nvm) ----------
 log "Node $NODE_VERSION via nvm"
@@ -93,20 +94,15 @@ have opencode || curl -fsSL https://opencode.ai/install | bash || fail "opencode
 log "graphify (uv tool)"
 have graphify || uv tool install graphifyy || fail "graphify (uv tool install graphifyy)"
 
-log "Google Cloud SDK"
-if [ ! -d "$HOME/google-cloud-sdk" ]; then
-  curl -fsSL https://sdk.cloud.google.com | bash -s -- --disable-prompts --install-dir="$HOME" || fail "Google Cloud SDK"
-fi
-
-# ---------- VS Code Insiders extensions ----------
-log "VS Code Insiders extensions"
-CODE="/Applications/Visual Studio Code - Insiders.app/Contents/Resources/app/bin/code-insiders"
+# ---------- VS Code extensions ----------
+log "VS Code extensions"
+CODE="/Applications/Visual Studio Code.app/Contents/Resources/app/bin/code"
 if [ -x "$CODE" ]; then
   while read -r ext; do
     [ -n "$ext" ] && { "$CODE" --install-extension "$ext" --force >/dev/null || fail "vscode ext: $ext"; }
   done < "$DOTFILES/vscode/extensions.txt"
 else
-  fail "VS Code extensions (Insiders app not found)"
+  fail "VS Code extensions (VS Code app not found)"
 fi
 
 # ---------- Summary ----------
@@ -123,4 +119,4 @@ if [ ${#MANUAL[@]} -gt 0 ]; then
     [ "$url" != "-" ] && echo "      link: $url"
   done
 fi
-echo "Next: chsh -s /bin/zsh (if needed), open a new terminal, edit ~/.gitconfig (name/email), run 'claude' and log in, 'gh auth login', 'gcloud init'."
+echo "Next: chsh -s /bin/zsh (if needed), open a new terminal, edit ~/.gitconfig (name/email), run 'claude' and log in, 'gh auth login'."
