@@ -1,5 +1,4 @@
 angular.ng-template
-anthropic.claude-code
 arcticicestudio.nord-visual-studio-code
 bierner.markdown-mermaid
 bpruitt-goddard.mermaid-markdown-syntax-highlighting
@@ -31,9 +30,7 @@ pnp.polacode
 pranaygp.vscode-css-peek
 rexebin.dracula
 ritwickdey.liveserver
-rooveterinaryinc.roo-cline
 sakamoto66.vscode-playwright-test-runner
-saoudrizwan.claude-dev
 sdras.night-owl
 simonsiefke.svg-preview
 streetsidesoftware.code-spell-checker
